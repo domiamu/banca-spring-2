@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Versamento</title>
+
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ <script src=
+		"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+</head>
+<body>
+<div align=center>
+<table class="w3-table w3-striped w3-border" >
+	<h1>Visualizza Conto</h1>
+
+<tr >
+	<br>
+	
+	<th>Numero conto</th>
+	<th>Correntista   </th>
+	<th>Saldo</th>
+	<th>Inserisci versamento   </th>
+	<th>Versamento   </th>
+		
+ 
+</tr>
+
+  			
+<tr >		
+<form action="#" th:action="@{/versamentoSaldo}" th:object="${conto}" method="POST">
+
+  			
+<input type="hidden" th:field="*{id}"  />
+  			
+ <td>
+ <input th:field="*{numeroConto}" readonly="readonly">
+ </td> 
+  
+ <td> 
+ <input type="text" th:field="*{correntista.id}" readonly="readonly">
+ </td> 
+  
+ <td>   
+ <input type="text" th:field="*{saldo}" readonly="readonly">
+   </td>
+   
+ <td>
+ <input required type="number" name="versamento" th:min="10" placeholder="versamento" class="form-control mb-4 col-4">
+ </td>
+ 
+ <td>
+<button type="submit" class="btn btn-info col-2">Salva Conto</button>
+</td>
+ 
+ 
+</form>
+
+</tr>
+		
+</table>
+
+<p>
+
+<a th:href ="@{/}" class="w3-button  w3-green"> Torna alla lista degli utenti</a>
+</div>	
+		
+
+</body>
+</html>			

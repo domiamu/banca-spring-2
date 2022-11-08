@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home page</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+ <script src=
+		"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+<style>
+body {
+  background-color: lightblue;
+ }
+</style>
+<body>
+<p>Non ti piace questo colore dello sfondo? cambialo!</p>
+   
+    <button type="button" align = "left" onclick="changecolor()">
+       	Cambia colore
+    </button>
+         
+    <script>
+        function changecolor()
+        {
+            
+            var color = "#"+(Math.random()*16777215|0).toString(16);
+              
+            $("body").css("background-color",color);
+        }
+    </script>
+<div align="center">
+
+
+<h1>Lista correntisti</h1><br>
+<a th:href = "@{/nuovoCorrentistaForm}" class="w3-button w3-green"> Aggiungi utente</a>
+<a th:href = "@{/nuovoContoForm}" class="w3-button w3-green"> Aggiungi Conto</a>
+
+  <table class="w3-table w3-striped w3-border">
+		<thead>
+		<tr>
+				
+				<th> Nome utente </th>
+		  		<th> Cognome utente </th>
+  				<th> Data di nascita  </th>
+  				<th> Codice Fiscale </th>
+  				
+
+  		</tr>
+  		</thead>
+  			<tbody>
+  				 
+  				<tr th:each="correntista : ${listaCorrentisti}">
+  			
+  					<td th:text="${correntista.nome}"></td> 
+  					<td th:text="${correntista.cognome}"></td>
+  					<td th:text="${correntista.dataNascita}"></td>
+  					<td th:text="${correntista.codiceFiscale}"></td>
+  					
+  					<td> 
+  					<a th:href="@{/modificaCorrentistaForm/{id}(id=${correntista.id})}" class="w3-button w3-blue">Modifica Correntista</a>
+  					
+  					<a th:href="@{/visualizzaDettagliForm/{id}(id=${correntista.id})}" class="w3-button w3-green"> Visualizza Dettagli Conto</a>
+  					<a th:href="@{/cancellazioneCorrentista/{id}(id=${correntista.id})}" class="w3-button w3-red">Cancella correntista</a>
+  					</td>
+  					</tr>
+  					 
+  					 
+  				
+  					 
+  					 
+  		
+  			</tbody>
+  </table>
+</div>
+
+</body>
+</html>

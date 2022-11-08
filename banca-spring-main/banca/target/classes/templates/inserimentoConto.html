@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserimento Conto</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ <script src=
+		"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+</head>
+<body>
+<div align= center>
+	<h1>Registrazione Conto</h1>
+
+	<form action="#" th:action="@{salvaConto}" th:object="${conto}"
+		method="POST">
+		<input required type="text" th:field="*{numeroConto}" placeholder="Numero Conto" class="form-control mb-4 col-4"> 
+		<input required type="text" th:field="*{saldo}" placeholder="Saldo" class="form-control mb-4 col-4"> 
+ 
+ 
+		<!-- menu a tendina per prendere i correntisti caricati -->
+		
+		<select th:field="*{correntista}" >
+		<th:block th:each="correntista : ${listaCorrentisti}">
+		<option  th:value="${correntista.id}" th:text="${correntista.nome}"></option>
+		</th:block>
+		
+		</select>
+<br>
+<br>
+			<p>
+		<button type="submit" class="btn btn-info col-2">Abbina Conto</button>
+			
+			<a th:href = "@{/}" class="w3-button  w3-green"> Torna alla lista degli utenti</a>
+			
+			
+
+	</form>
+</div>
+
+
+
+</body>
+</html>
